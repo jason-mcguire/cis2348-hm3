@@ -1,7 +1,5 @@
--- Create your initial database tables in this file
--- Example
-CREATE TABLE contact (
-  id INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE contact(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
   name VARCHAR(20) NOT NULL,
   address VARCHAR(20),
   phone CHAR(12)

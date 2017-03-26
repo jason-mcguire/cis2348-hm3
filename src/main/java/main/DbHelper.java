@@ -48,18 +48,17 @@ public class DbHelper {
      */
     public void init() throws SQLException {
 
-        // initialize database
+//        // run Flyway to update the db if needed
+//        Flyway flyway = new Flyway();
+//        flyway.setDataSource("jdbc:sqlite:hm3.db","","");
+//        flyway.migrate();
+//
+        // initialize datasource
         ds = new BasicDataSource();
-        ds.setUrl("jdbc:h2:./target/db;AUTO_SERVER=TRUE");
-        ds.setDriverClassName("org.h2.Driver");
-        ds.setUsername("sa");
-        ds.setPassword("1234");
+        ds.setUrl("jdbc:sqlite:hm3.db");
+        ds.setDriverClassName("org.sqlite.JDBC");
         ds.getConnection();
 
-        // run Flyway to update the db if needed
-        Flyway flyway = new Flyway();
-        flyway.setDataSource(ds);
-        flyway.migrate();
     }
 
     /**

@@ -2,21 +2,36 @@ package main;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.flywaydb.core.Flyway;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, FileNotFoundException {
         DbHelper dbHelper = DbHelper.getInstance();
         dbHelper.init();
+        processDataFile("contacts.txt");
 
-        // start your work here
-        // open and read the file contacts.txt
-        // for each line in the file, use the String split function to extract the name, address, and phone number
-        //    create a new contact and set the fields that you just extracted
-        //    call the save method on the contact to save it to the database
-        // retrieve a list of all the contacts and print them out to the console
+
 
         dbHelper.close();
+    }
+
+    private static void processDataFile(String fileName) throws FileNotFoundException, SQLException {
+        // start your work here
+        // open and read the file contacts.txt
+        Scanner scn = new Scanner(new File(fileName));
+        while(scn.hasNextLine()){
+            String[] data = scn.nextLine().trim().split(",");
+            String name = data[0];
+            String address = data[1];
+            String phone = data[2];
+            Contact contact = new Contact(name,address,phone);
+            contact.save();
+
+        }
     }
 }
