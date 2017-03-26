@@ -19,6 +19,10 @@ public class DbHelper {
     private static DbHelper INSTANCE = new DbHelper();
 
     // In order to create a singleton, we hide the constructor
+
+    /**
+     * This is a private constructor. The purpose is to make this class a singleton.
+     */
     private DbHelper(){
 
 
@@ -34,7 +38,7 @@ public class DbHelper {
 
     /**
      * Return a connection object
-     * @return
+     * @return Connection instance
      * @throws SQLException
      */
     public Connection getConnection() throws SQLException {
