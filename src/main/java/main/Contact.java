@@ -4,45 +4,82 @@ import java.sql.*;
 
 public class Contact {
 
-    private int ID;
 
+    /**
+     * Setting variables to respected name
+     */
+    private int ID;
     private String name;
     private String address;
     private String phoneNumber;
+
+    /**
+     * "Contact" method consists of name, address, and phone
+     * @param name
+     * @param address
+     * @param phone
+     */
     public Contact(String name, String address, String phone) {
         this.name = name;
         this.address = address;
         this.phoneNumber = phone;
     }
 
-    public String getName() {
-        return name;
-    }
+    /**
+     * Returns name string
+     * @return name
+     */
+    public String getName() {return name; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public String getAddress() {
-        return address;
-    }
+    /**
+     *Method name "setName" is equal to "name" in "Contact" method
+     * @param name
+     */
+    public void setName(String name) {this.name = name; }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+    /**
+     * Returns address string
+     * @return address
+     */
+    public String getAddress() {return address; }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
+    /**
+     * Method name "setAddress" is equal to "address" in "Contact" method
+     * @param address
+     */
+        public void setAddress(String address) {this.address = address; }
 
+
+    /**
+     * Returns phoneNumber string
+     * @return phoneNumber
+     */
+    public String getPhoneNumber() {return phoneNumber; }
+
+    /**
+     * Method name "setPhoneNumber" is equal to "phoneNumber" in "Contact" method
+     * @param phoneNumber
+     */
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
+
+    /**
+     * Declare setID
+     * @param ID
+     */
     public void setID(int ID) {
         this.ID = ID;
     }
 
+
+    /**
+     * Multiple loops that return false if specific condition is met
+     * @param o
+     * @return false
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -65,6 +102,11 @@ public class Contact {
         return result;
     }
 
+
+    /**
+     * Saves contact to add to database
+     * @throws SQLException
+     */
     public void save() throws SQLException {
         Connection connection = DbHelper.getInstance().getConnection();
 
@@ -80,15 +122,31 @@ public class Contact {
 
     }
 
+    /**
+     *
+     * @return String.format
+     */
     @Override
     public String toString() {
         return String.format("ID: %s Name: %s Address %s Phone %s",ID,name,address,phoneNumber);
     }
 
+
+    /**
+     * Returns ID
+     * @return
+     */
     public int getID() {
         return ID;
     }
 
+
+    /**
+     * Creates connection to database
+     * @param id
+     * @return
+     * @throws SQLException
+     */
     public static Contact load(int id) throws SQLException {
         Connection connection = DbHelper.getInstance().getConnection();
         Statement statement = connection.createStatement();
@@ -109,6 +167,10 @@ public class Contact {
 
     }
 
+    /**
+     * Deletes contact from database
+     * @throws SQLException
+     */
     public void delete() throws SQLException {
         Connection connection = DbHelper.getInstance().getConnection();
         Statement statement = connection.createStatement();

@@ -24,6 +24,9 @@ public class DbHelperTest {
         helper.close();
     }
 
+    /**
+     * Test connection; prints error if unsuccessful
+     */
     @Test
     public void connectionTest(){
         try {

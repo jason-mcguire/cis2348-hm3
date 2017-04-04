@@ -20,6 +20,12 @@ public class Main {
         dbHelper.close();
     }
 
+    /**
+     * Process all data to output file
+     * @param fileName
+     * @throws FileNotFoundException
+     * @throws SQLException
+     */
     private static void processDataFile(String fileName) throws FileNotFoundException, SQLException {
         // start your work here
         // open and read the file contacts.txt

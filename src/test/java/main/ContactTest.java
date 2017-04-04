@@ -19,6 +19,10 @@ public class ContactTest {
         helper.init();
     }
 
+    /**
+     * Deletes contact if null
+     * @throws SQLException
+     */
     @After
     public void closeHelper() throws SQLException {
         if(contact != null) {
@@ -27,6 +31,9 @@ public class ContactTest {
         helper.close();
     }
 
+    /**
+     * Saves data
+     */
     @Test
     public void saveDataTest(){
         try {
